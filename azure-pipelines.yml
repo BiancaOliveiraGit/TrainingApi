@@ -16,9 +16,12 @@ steps:
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
 
-# ASP.NET Core
 - task: AzureRmWebAppDeployment@4
+  displayName: 'Deploy Azure App ServiceApi'
   inputs:
-    ConnectedServiceName: 'Visual Studio Enterprise (d2049d9d-1b3e-4047-9440-4c1d065c860f)'
+    ConnectedServiceName: 'Visual Studio Enterprise(d2049d9d-1b3e-4047-9440-4c1d065c860f)'
     WebAppKind: 'apiApp'
-    WebAppName: 'TrainingApi'
+    WebAppName: exercisetrainingapp
+
+
+    
