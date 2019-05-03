@@ -1,1 +1,2 @@
 TrainingApi
+* Azure Pipeline devops
