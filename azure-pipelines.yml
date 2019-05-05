@@ -12,12 +12,35 @@ pool:
 variables:
   buildConfiguration: 'Release'
 
+#steps:
+#- script: dotnet build --configuration $(buildConfiguration)
+#  displayName: 'dotnet build $(buildConfiguration)'
 steps:
-- script: dotnet build --configuration $(buildConfiguration)
-  displayName: 'dotnet build $(buildConfiguration)'
+- task: DotNetCoreCLI@2
+  displayName: Build
+  inputs:
+    projects: '$(Parameters.RestoreBuildProjects)'
+    arguments: '--configuration $(BuildConfiguration)'
+
+#- task: DotNetCoreCLI@2
+#  displayName: Test
+ # inputs:
+ #   command: test
+ #   projects: '$(Parameters.TestProjects)'
+ #   arguments: '--configuration $(BuildConfiguration)'
 
 # Publish Pipeline Artifact
 # Publish a local directory or file as a named artifact for the current pipeline.
+##  displayName: 'Publish Artifact'
+#  inputs:
+#    PathtoPublish: '$(build.artifactstagingdirectory)'
+- task: DotNetCoreCLI@2
+  displayName: Publish
+  inputs:
+    command: publish
+    publishWebProjects: True
+    arguments: '--configuration $(BuildConfiguration) --output $(build.artifactstagingdirectory)'
+
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact'
   inputs:
