@@ -18,10 +18,10 @@ steps:
 
 # Publish Pipeline Artifact
 # Publish a local directory or file as a named artifact for the current pipeline.
-- task: PublishPipelineArtifact@0
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact'
   inputs:
-    artifactName: 'publishArtifact' 
-    targetPath:
+    PathtoPublish: '$(build.artifactstagingdirectory)'
 
 - task: AzureRmWebAppDeployment@4
   displayName: 'Deploy Azure App ServiceApi'
