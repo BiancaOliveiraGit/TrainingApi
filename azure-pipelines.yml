@@ -48,11 +48,13 @@ steps:
     command: publish
     publishWebProjects: false
     arguments: '--configuration $(BuildConfiguration) --output $(build.artifactstagingdirectory)'
+    zipAfterPublish: true
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact'
   inputs:
     PathtoPublish: '$(build.artifactstagingdirectory)'
+    
 
 - task: AzureRmWebAppDeployment@4
   displayName: 'Deploy Azure App ServiceApi'
