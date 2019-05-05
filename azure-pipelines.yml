@@ -46,7 +46,7 @@ steps:
   displayName: Publish
   inputs:
     command: publish
-    publishWebProjects: True
+    publishWebProjects: false
     arguments: '--configuration $(BuildConfiguration) --output $(build.artifactstagingdirectory)'
 
 - task: PublishBuildArtifacts@1
