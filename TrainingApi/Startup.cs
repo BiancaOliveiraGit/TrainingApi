@@ -22,8 +22,8 @@ namespace TrainingApi
         {
             services.AddDbContext<AppDbContext>(cfg =>
             {
-                var connection = _config["LocalTrainingApiConnectionString"].ToString();
-               // var connection = _config["ProductionTrainingApiConnectionString"].ToString();
+               // var connection = _config["LocalTrainingApiConnectionString"].ToString();
+                var connection = _config["ProductionTrainingApiConnectionString"].ToString();
                 cfg.UseSqlServer(connection);
             });
             services.AddScoped<IRepository, Repository>();
