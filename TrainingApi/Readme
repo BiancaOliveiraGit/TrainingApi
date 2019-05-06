@@ -1,0 +1,24 @@
+TrainingApi uses following tech:
+--------------------------------
+
+WebApp - Asp.Net Core MVC pages
+Web Api - C# .NetCore project independent of WebApp
+
+#DATA:
+* dotnet ef migrations
+* override modelbuilder to seed data into database
+* Azure SQL database - connectionString in Azure KeyVault Secrets
+
+#WORK FLOW:
+* GitHub Repo - source control
+* Azure Boards intergration to GitHub Repo - tracking tasks
+
+#State Management:
+* Cookies stores ClientId - all Layouts and api need it
+
+#Logging:
+* Azure App Service Logging Provider - log to storage blob text file
+									 - only in effect when app deployed to Azure
+
+#Credits:
+* Stock images from https://www.pexels.com
