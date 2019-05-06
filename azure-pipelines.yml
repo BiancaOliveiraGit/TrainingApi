@@ -1,4 +1,4 @@
-# ASP.NET Core
+
 # Build and test ASP.NET Core projects targeting .NET Core.
 # Add steps that run tests, create a NuGet package, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
@@ -15,3 +15,20 @@ variables:
 steps:
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
+
+# Publish Pipeline Artifact
+# Publish a local directory or file as a named artifact for the current pipeline.
+- task: PublishPipelineArtifact@0
+  inputs:
+    artifactName: 'publishArtifact' 
+    targetPath:
+
+- task: AzureRmWebAppDeployment@4
+  displayName: 'Deploy Azure App ServiceApi'
+  inputs:
+    ConnectedServiceName: 'Visual Studio Enterprise(d2049d9d-1b3e-4047-9440-4c1d065c860f)'
+    WebAppKind: 'apiApp'
+    WebAppName: exercisetrainingapp
+
+
+    
